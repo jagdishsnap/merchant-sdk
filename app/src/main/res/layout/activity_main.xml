@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <RadioGroup
+        android:id="@+id/rgTypes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="32dp">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rbProd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Prod"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/rbTest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:checked="true"
+            android:text="Test"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </RadioGroup>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@color/purple_700"
+        android:text="Submit"
+        android:textColor="@color/white" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="Success"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:visibility="gone" />
+</LinearLayout>
