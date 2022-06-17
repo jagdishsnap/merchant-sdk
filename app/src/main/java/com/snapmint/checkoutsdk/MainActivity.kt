@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.snapmint.checkoutsdk.databinding.ActivityMainBinding
@@ -26,11 +27,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initActions()
-        setupData()
+        //setupData()
 
     }
 
-    private fun setupData() {
+    private fun setupData() = binding.apply{
         baseUrl = if (isProd){
             "https://api.snapmint.com/v1/public/online_checkout"
         }else{
@@ -42,15 +43,15 @@ class MainActivity : AppCompatActivity() {
             "sdk",
             "+Q4pfCpQ44AevJjakhcBovSNkO6A1Y6jbepCtamlTnhq9OhG+ZYvyyQPXENNVoNYVZIyYuHDXg5Ovd8kQFO3eQ==",
             "new_user",
-            "7777777771",
-            "366",
+            userMobile?.text.toString(),
+            merchantId?.text.toString(),
             "1",
             "1",
-            "2000",
+            orderValue?.text.toString(),
             "http://www.vijaysales.com/success",
             "http://www.vijaysales.com/failed",
             "GIRIDHAR Crawley",
-            "qwerty@gmail.com",
+            userEmail?.text.toString(),
             "GIRIDHAR Crawley",
             "GIRIDHAR EVENT ORGANRING",
             "Mumbai",
@@ -111,7 +112,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun initActions() {
+    private fun initActions() = binding.apply{
         binding.rgTypes.setOnCheckedChangeListener { group, checkedId ->
             isProd = when (checkedId) {
                 R.id.rbProd -> {
@@ -141,14 +142,26 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnSubmit.setOnClickListener {
 
-            val intent = Intent(this@MainActivity, CheckoutActivity::class.java)
-            intent.putExtra(ApiConstants.FINAL_DATA, finalData)
-            intent.putExtra(ApiConstants.BASE_URL, baseUrl)
-            intent.putExtra(ApiConstants.OPTION, "check_out")
-            intent.putExtra(ApiConstants.SUC_URL, sucUrl)
-            intent.putExtra(ApiConstants.FAIL_URL, failUrl)
-            resultLauncher.launch(intent)
-
+            if (userName.text.isBlank()) {
+                Toast.makeText(this@MainActivity, "Please enter name", Toast.LENGTH_SHORT).show()
+            } else if (userMobile.text.isBlank()) {
+                Toast.makeText(this@MainActivity, "Please enter mobile number", Toast.LENGTH_SHORT).show()
+            } else if (userEmail.text.isBlank()) {
+                Toast.makeText(this@MainActivity, "Please enter email", Toast.LENGTH_SHORT).show()
+            } else if (merchantId.text.isBlank()) {
+                Toast.makeText(this@MainActivity, "Please enter merchant id", Toast.LENGTH_SHORT).show()
+            } else if (orderValue.text.isBlank()) {
+                Toast.makeText(this@MainActivity, "Please enter order value", Toast.LENGTH_SHORT).show()
+            } else {
+                setupData()
+                val intent = Intent(this@MainActivity, CheckoutActivity::class.java)
+                intent.putExtra(ApiConstants.FINAL_DATA, finalData)
+                intent.putExtra(ApiConstants.BASE_URL, baseUrl)
+                intent.putExtra(ApiConstants.OPTION, "check_out")
+                intent.putExtra(ApiConstants.SUC_URL, sucUrl)
+                intent.putExtra(ApiConstants.FAIL_URL, failUrl)
+                resultLauncher.launch(intent)
+            }
         }
     }
 }

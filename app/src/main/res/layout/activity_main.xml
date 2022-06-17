@@ -10,9 +10,9 @@
         android:id="@+id/rgTypes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="60dp"
-        android:layout_marginEnd="32dp">
+        android:layout_marginEnd="16dp">
 
         <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/rbProd"
@@ -33,6 +33,54 @@
             android:textColor="@color/black"
             android:textSize="20sp" />
     </RadioGroup>
+
+
+    <EditText
+        android:id="@+id/user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your name"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"></EditText>
+
+    <EditText
+        android:id="@+id/user_mobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your mobile number"
+        android:layout_marginStart="16dp"
+        android:inputType="number"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"></EditText>
+
+    <EditText
+        android:id="@+id/user_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your email id"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"></EditText>
+
+    <EditText
+        android:id="@+id/merchant_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter merchant id"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"></EditText>
+
+    <EditText
+        android:id="@+id/order_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter order value"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:inputType="number"
+        android:layout_marginTop="16dp"></EditText>
 
 
     <androidx.appcompat.widget.AppCompatButton
